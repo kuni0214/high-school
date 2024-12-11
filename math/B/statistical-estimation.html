@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        MathJax = {tex: {inlineMath: [['$', '$']]}}; 
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>統計的な推測</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #e0e5ea; /* 背景色*/
+        }
+        .content {
+            max-width: 800px;
+            margin: 0 auto; 
+            background-color: #fbfeff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        header {
+            background-color: #1166bb;
+            color: #fbfeff;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 10px;
+            top: 0;
+            left: 0;
+            right: 0;
+            position: relative;
+        }
+        footer {
+            background-color: #1166bb;
+            color: #fbfeff;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        h2 {
+            color: #1188ff; /* タイトルの色 */
+            border-bottom: 2px solid #1188ff; /* 下線 */
+            padding-bottom: 10px;
+            text-align: left;
+        }
+        h3 {
+            color: #1688fa; /* 小見出しの色 */
+            text-align: left;
+        }
+        h4 {
+            color: #1b88f5; /* 中見出しの色*/
+            text-align: left;
+        }
+        p {
+            text-align: justify;
+            margin-bottom: 20px;
+            color: #223344; /* 標準テキストの色*/
+            text-align: left;
+        }
+        table {
+            table-layout: fixed; /* 固定幅 */
+            margin: 20px 0;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        td {
+            border: 1px solid #223344;
+            text-align: center;
+            padding: 12px;
+            background-color: #fbfeff; /* セル背景色を明るめに */
+        }
+        th {
+            border: 1px solid #223344;
+            background-color: #ddeeff; /* ヘッダー */
+            color: #223344; /* ヘッダーの文字色 */
+        }
+        .annotation {
+            background-color: #f7fcff; /* 注釈の背景色 */
+            border: 1px solid #223344;
+            padding: 15px;
+            margin-top: 20px; 
+            border-radius: 5px; /* 丸みを追加 */
+        }
+        .annotation-item {
+            margin-top: 5px;
+        }
+        .scrollable {
+            overflow-x: auto;
+            overflow-y: visible;
+            white-space: nowrap;
+            margin: 0px; 
+        }
+        @media (max-width: 600px) {
+            .content {
+                padding: 10px; /* 小さいスクリーン用にパディングを調整 */
+            }
+            th, td {
+                padding: 8px; /* テーブルセルのパディングを調整 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>統計的な推測</h1>
+    </header>
+<main>
+    <div class="content">
+    <h2>目次</h2>
+        <ol>
+            <li><a href="#section1">確率分布</a>
+                <ol>
+                    <li><a href="#subsection1">確率変数と確率分布</a></li>
+                    <li><a href="#subsection2">二項分布（離散型確率変数）</a></li>
+                    <li><a href="#subsection3">正規分布（連続型確率変数）</a></li>
+                </ol>
+            </li>
+            <li><a href="#section2">統計的な推測</a>
+                <ol>
+                    <li><a href="#subsection4">母集団と標本</a></li>
+                    <li><a href="#subsection5">区間推定</a></li>
+                    <li><a href="#subsection6">仮説検定</a></li>
+                </ol>
+            </li>
+            <li><a href="#pdf">PDF ファイル</a></li>
+        </ol>
+
+        <section id="section1">
+<p>&ensp;</p>
+            <h2>確率分布</h2>
+        <subsection id="subsection1">
+            <h3>確率変数と確率分布</h3>
+        <p>各値に対応して確率が定まるような変数を <strong>確率変数</strong> という。たとえば，$ 2\hspace{0.1em} $枚のコインを同時に投げるとき，表のコインの枚数 $X$ は確率変数である。</p>
+        <p>確率変数 $ X $ が $ a $ である確率を $ P\left(X = a\right) $，$ a $ 以上 $ b $ 以下である確率を $ P\left(a \leqq X \leqq b\right) $ のように表す。たとえば，$ 2\hspace{0.1em} $枚のコインを同時に投げるとき，表のコインの枚数を $ X $ とすると <div class="scrollable">$$ P\left(X = 1\right) = \dfrac{{\vphantom{\textrm{C}}}_{2}{\textrm{C}}_{1}}{{2}^{2}} = \dfrac{1}{2} $$</div> である。</p>
+        <p>確率変数 $ X $ のとりうる値 $ {x}_{1}, {x}_{2}, \dotsc\dotsc, {x}_{n} $ とそれぞれの値をとる確率 $ {p}_{1}, {p}_{2}, \dotsc\dotsc, {p}_{n} $ の対応関係を <strong>確率分布</strong> といい，以下のような表で書き表す。</p>
+<div class="scrollable">
+    <table>
+        <tbody>
+            <tr>
+                <th style="text-align: center;">$ X $</th>
+                <td style="text-align: center;">$ {x}_{1} $</td>
+                <td style="text-align: center;">$ {x}_{2} $</td>
+                <td style="text-align: center;">$ \cdots $</td>
+                <td style="text-align: center;">$ {x}_{n} $</td>
+                <td style="text-align: center;">計</td>
+            </tr>
+            <tr>
+                <th style="text-align: center;">$ P $</th>
+                <td style="text-align: center;">$ {p}_{1} $</td>
+                <td style="text-align: center;">$ {p}_{2} $</td>
+                <td style="text-align: center;">$ \cdots $</td>
+                <td style="text-align: center;">$ {p}_{n} $</td>
+                <td style="text-align: center;">$ 1 $</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    <p>確率分布が上の表で与えられるとき，$ \displaystyle \sum_{k = 1}^{n} {x}_{k\hspace{0.1em}}{p}_{k} $ を確率変数 $ X $ の <strong>期待値</strong> または <strong>平均</strong> といい，$ E\left(X\right) $ または $ m $ で表す。</p>
+    <p>確率変数 $ X $ の各値と平均 $ m $ の離れ具合を表す確率変数 $ {\left(X − m\right)}^{2} $ の期待値 $ E\left({\left(X − m\right)}^{2}\right) $ を確率変数 $X$ の <strong>分散</strong> といい，$ V\left(X\right) $ で表す。$ V\left(X\right) $ は $ {X}^{2} $ の期待値 $ E\left({X}^{2}\right) $ と $ X $ の期待値 $ E\left(X\right) $ を用いて <div class="scrollable">$$ V\left(X\right) = E\left({X}^{2}\right) - {\left\{E\left(X\right)\right\}}^{2} $$</div> とも表される。また，分散の正の平方根 $ \sqrt{V\left(X\right)} $ を確率変数 $ X $ の <strong>標準偏差</strong> といい，$ σ\left(X\right) $ で表す。</p>
+    <p>互いに独立な確率変数 $ X $，$ Y $ に対しては，\begin{align*} E\left(X + Y\right) &amp;= E\left(X\right) + E\left(Y\right) \\ E\left(XY\right) &amp;= E\left(X\right)E\left(Y\right) \\ V\left(X + Y\right) &amp;= V\left(X\right) + V\left(Y\right) \end{align*} が成り立つ。</p></subsection>
+<p>&ensp;</p>
+<subsection id="subsection2">
+    <h3>二項分布（離散型確率変数）</h3>
+    <p>$ 1\hspace{0.1em} $回の試行で事象 $ A $ が起こる確率が $ p $ であるとき，この試行を $ n $ 回行う反復試行において事象 $ A $ がちょうど $ r $ 回起こる確率は <div class="scrollable">$$ {\vphantom{\textrm{C}}}_{n}{\textrm{C}}_{r\hspace{0.1em}}{p}^{r}{\left(1 - p\right)}^{n − r} $$</div> である。つまり，事象 $ A $ の起こる回数を $ X $ とすると，確率変数 $ X $ の確率分布は以下の表で与えられる。</p>
+<div class="scrollable">
+    <table>
+        <tbody>
+            <tr>
+                <th style="text-align: center;">$ X $</th>
+                <td style="text-align: center;">$ 0 $</td>
+                <td style="text-align: center;">$ 1 $</td>
+                <td style="text-align: center;">$ \cdots $</td>
+                <td style="text-align: center;">$ r $</td>
+                <td style="text-align: center;">$ \cdots $</td>
+                <td style="text-align: center;">$ n $</td>
+                <td style="text-align: center;">計</td>
+            </tr>
+            <tr>
+                <th style="text-align: center;">$ P $</th>
+                <td style="text-align: center;">$ {\vphantom{\textrm{C}}}_{n}{\textrm{C}}_{0\hspace{0.1em}}{\left(1 - p\right)}^{n} $</td>
+                <td style="text-align: center;">$ {\vphantom{\textrm{C}}}_{n}{\textrm{C}}_{1\hspace{0.1em}}p{\left(1 - p\right)}^{n − 1} $</td>
+                <td style="text-align: center;">$ \cdots $</td>
+                <td style="text-align: center;">$ {\vphantom{\textrm{C}}}_{n}{\textrm{C}}_{r\hspace{0.1em}}{p}^{r}{\left(1 - p\right)}^{n − r} $</td>
+                <td style="text-align: center;">$ \cdots $</td>
+                <td style="text-align: center;">$ {\vphantom{\textrm{C}}}_{n}{\textrm{C}}_{n\hspace{0.1em}}{p}^{n} $</td>
+                <td style="text-align: center;">$ 1 $</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    <p>このような確率分布を <strong>二項分布</strong> といい，$ B\left(n, p\right) $ で表す。確率変数 $ X $ が二項分布 $ B\left(n, p\right)$ に従うとき，その期待値，分散，標準偏差に対して <div class="scrollable">\begin{align*} E\left(X\right) &amp;= np \\ V\left(X\right) &amp;= np\left(1 - p\right) \\ σ\left(X\right) &amp;= \sqrt{np\left(1 - p\right)} \end{align*}</div> が成り立つ。</p></subsection>
+<p>&ensp;</p>
+<subsection id="subsection3">
+    <h3>正規分布（連続型確率変数）</h3>
+    <p>連続した値をとる確率変数を <strong>連続型確率変数</strong> という。連続型確率変数の確率分布は表で書き表せないので，グラフで表す。</p>
+    <p>常に $ f\left(x\right) \geqq 0 $ で，どんな値 $ a $，$ b $ に対しても $ \displaystyle P\left(a \leqq x \leqq b\right) = \int_{a}^{b} f\left(x\right) \mathrm{d}x $ であるような関数 $ f\left(x\right) 0 $ を <strong>確率密度関数</strong> という。 確率密度関数をグラフに表した曲線 $ y = f\left(x\right) $ を <strong>分布曲線</strong> という。</p>
+    <p>$ m $ を実数，$ σ $ を正の実数とするとき，関数 $$ f\left(x\right) = \dfrac{1}{\sqrt{2πσ}} {\mathrm{e}}^{−\frac{{\left(X − m\right)}^{2}}{2{σ}^{2}}} $$ は確率変数 $ X $ の確率密度関数となっている。このような確率分布を <strong>正規分布</strong> といい，$ N\left(m, {σ}^{2}\right) $ で表す。 確率変数 $ X $ が正規分布 $ N\left(m, {σ}^{2}\right) $ に従うとき， その期待値，分散，標準偏差に対して <div class="scrollable">\begin{align*} E\left(X\right) &amp;= m \\ V\left(X\right) &amp;= {σ}^{2} \\ σ\left(X\right) &amp;= σ \end{align*}</div> が成り立つ。</p>
+    <p>正規分布 $ N\left(0, 1\right) $ をとくに <strong>標準正規分布</strong> という。 確率変数 $ X $ が正規分布 $ N\left(m, {σ}^{2}\right) $ に従うとき，$ Z = \dfrac{X − m}{σ} $ とおくと，確率変数 $ Z $ は標準正規分布 $ N\left(0, 1\right) $ に従う。</p>
+    <p>また，データの大きさが十分に大きいとき，二項分布 $ B\left(n, p\right) $ に従う確率変数 $ X $ は<strong>近似的に</strong>正規分布 $ N\left(np, np\left(1 - p\right)\right) $ に従う。</p>
+</subsection></section>
+<p>&ensp;</p>
+<section id="section2">
+    <h2>統計的な推測</h2>
+<subsection id="subsection4">
+    <h3>母集団と標本</h3>
+    <p>特性を表す数量を <strong>変量</strong> という。 大きさ $ N $ の母集団において，変量 $ x $ のとりうる異なる値を $ {x}_{1}, {x}_{2}, \dotsc\dotsc, {x}_{n} $ とし，それぞれの値をとる個体の個数を $ {f}_{1}, {f}_{2}, \dotsc\dotsc, {f}_{n} $ とする。 この母集団から $ 1 $ 個の個体を無作為に抽出し，変量 $ x $ の値を $ X $ とするとき，確率変数 $ X $ の確率分布は以下の表のようになる。</p>
+<div class="scrollable">
+    <table>
+        <tbody>
+            <tr>
+                <th style="text-align: center;">$ X $</th>
+                <td style="text-align: center;">$ {x}_{1} $</td>
+                <td style="text-align: center;">$ {x}_{2} $</td>
+                <td style="text-align: center;">$ \cdots $</td>
+                <td style="text-align: center;">$ {x}_{n} $</td>
+                <td style="text-align: center;">計</td>
+            </tr>
+            <tr>
+                <th style="text-align: center;">$ P $</th>
+                <td style="text-align: center;">$ \dfrac{{f}_{1}}{N} $</td>
+                <td style="text-align: center;">$ \dfrac{{f}_{2}}{N} $</td>
+                <td style="text-align: center;">$ \cdots $</td>
+                <td style="text-align: center;">$ \dfrac{{f}_{n}}{N} $</td>
+                <td style="text-align: center;">$ 1 $</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    <p>この $ X $ の確率分布を <strong>母集団分布</strong> という。また，確率変数 $ X $ の期待値，標準偏差をそれぞれ <strong>母平均</strong>，<strong>母標準偏差</strong> といい，$ m $，$ σ $ で表す。</p>
+    <p>母集団から大きさ $ n $ の無作為標本を抽出し，それらの変量 $ x $ の値を ${X}_{1}, {X}_{2}, \dotsc\dotsc, {X}_{n} $ とするとき，<div class="scrollable">$$ \hspace{0.15em}\overline{\hspace{-0.15em}X} = \dfrac{{X}_{1} + {X}_{2} + \dotsb\dotsb + {X}_{n}}{n} $$</div> を <strong>標本平均</strong> という。標本平均もまた確率変数であり、標本を取り出す度に標本平均はバラつく。</p>
+    <p>母平均 $ m $，母標準偏差 $ σ $ の母集団から大きさ $ n $ の無作為標本を抽出するとき， その標本平均 $ \hspace{0.15em}\overline{\hspace{-0.15em}X} $ の期待値 $ E(\hspace{0.15em}\overline{\hspace{-0.15em}X}) $ と標準偏差 $ σ(\hspace{0.15em}\overline{\hspace{-0.15em}X}) $ は <div class="scrollable">$$ E(\hspace{0.15em}\overline{\hspace{-0.15em}X}) = m,\quad σ(\hspace{0.15em}\overline{\hspace{-0.15em}X}) = \dfrac{σ}{\sqrt{n}}$$</div> である。これは，取り出した標本を平均すると母平均程度となることが期待され，標本の大きさが大きいほどその標本平均のズレ（散らばり方）は小さくなるということを意味する。</p>
+    <p>母集団の中で特性 $ A $ をもつものの割合を $ A $ の <strong>母比率</strong> といい，抽出された標本の中で特性 $ A $ をもつものの割合を $ A $ の <strong>標本比率</strong> という。</p>
+    <p>標本の中で特性 $ A $ をもつものの個数を考えるには，特性 $ A $ をもつとき $ {X}_{k} = 1 $，特性 $ A $ をもたないとき $ {X}_{k} = 0 $ として考えればよい。<div class="scrollable">$$ T = \sum_{k = 1}^{n}{X}_{k} $$</div> が特性 $ A $ をもつものの個数を表す確率変数となっている。</p>
+    <p>標本の大きさを $ n $，母比率を $ p $ とすると，確率変数 $ T $ は二項分布 $ B\left(n, p\right) $ に従う。標本平均 $ \hspace{0.15em}\overline{\hspace{-0.15em}X} = \dfrac{T}{n} $ は特性 $ A $ の標本比率 $ R $ を表すので， $ n $ が大きいとき，標本比率 $ R $ は近似的に正規分布 $ N\left(p, \dfrac{p\left(1 - p\right)}{n}\right) $ に従う。<a href="#annotation1"><sup>[1]</sup></a></p>
+</subsection>
+<p>&ensp;</p>
+<subsection id="subsection5">
+    <h3>区間推定</h3>
+    <p>平均が $ m $，標準偏差が $ σ $ である母集団から抽出した大きさ $ n $ の無作為標本について，標本平均は $ 95\% $ の確率で <div class="scrollable">$$\left[m − 1.96\dfrac{σ}{\sqrt{n}},{\ }m + 1.96\dfrac{σ}{\sqrt{n}}\right] $$</div> の範囲に入る。また，母比率が $ p $ であるとき，標本比率は $ 95\% $ の確率で <div class="scrollable">$$\left[p − 1.96\sqrt{\dfrac{p\left(1 - p\right)}{n}},{\ }p + 1.96\sqrt{\dfrac{p\left(1 - p\right)}{n}}\right] $$</div> の範囲に入る。標本の大きさが十分に大きいときには標本平均 $ \hspace{0.15em}\overline{\hspace{-0.15em}X} $ は $ m $，標本の標準偏差 $ S $ は $ σ $ に近似できると考えられるので，母平均の信頼度 $ 95\% $ の信頼区間は <div class="scrollable">$$\left[\hspace{0.15em}\overline{\hspace{-0.15em}X} − 1.96\dfrac{S}{\sqrt{n}},{\ }\hspace{0.15em}\overline{\hspace{-0.15em}X} + 1.96\dfrac{S}{\sqrt{n}}\right] $$</div> である。 また，標本比率が $ R $ であるとき，母比率の信頼度 $ 95\% $ の信頼区間は <div class="scrollable">$$\left[R − 1.96\sqrt{\dfrac{R\left(1 - R\right)}{n}},{\ }R + 1.96\sqrt{\dfrac{R\left(1 - R\right)}{n}}\right] $$</div> である。<a href="#annotation2"><sup>[2]</sup></a></p>
+</subsection>
+<p>&ensp;</p>
+<subsection id="subsection6">
+    <h3>仮説検定</h3>
+    <p>ある仮説が正しいか否かを統計学的に検証することを <strong>仮説検定</strong> という。 「特別なことが起こっていない」という仮説 $ {H}_{0} $ を <strong>帰無仮説</strong> といい，それと対立する「特別なこと（意味のあること）が起こっている」という仮説 $ {H}_{1} $ を <strong>対立仮説</strong> という。 帰無仮説 $ {H}_{0} $ が棄却されると，「特別なことが起こっている」という結論に帰着し，対立仮説 ${H}_{1} $ が支持される。</p>
+</subsection>
+<p>&ensp;</p>
+        <div class="annotation">
+            <div class="annotation-item" id="annotation1" style="margin-left: 1.5em; text-indent: -1.5em;"><span>[1]</span>&ensp;考えているのが<strong>標本</strong>ではなく<strong>標本平均</strong>であるという点に注意する。</div>
+            <div class="annotation-item" id="annotation2" style="margin-left: 1.5em; text-indent: -1.5em;"><span>[2]</span>&ensp;$ 1.96 $ という値は，正規分布において平均から両側 $ 95\% $ の範囲，すなわち，片側 $ 47.5\% $ の区間を表す。 信頼度 $ 90\% $ で考えたければ $ 1.65 $，信頼度 $ 99\% $ で考えたければ $ 2.58 $ という値を使って計算すればよい。</div>
+        </div>
+<p>&ensp;</p>
+<section id="pdf">
+<h2>PDF ファイル</h2>
+<p>PDF ファイルは<a href="https://kuni0214.github.io/high-school/math/B/pdf/statistical-estimation.pdf">こちら</a>。正規分布表も載せている。</p>
+</section>
+</main>
+    <footer>
+        This site was created by Bessho.
+    </footer>
+</body>
+</html>
