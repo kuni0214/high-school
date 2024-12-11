@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<script>
+		MathJax = {tex: {inlineMath: [['$', '$']]}};
+	</script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>高校数学</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			line-height: 1.75;
+			margin: 0 auto;
+			padding: 0;
+			background-color: #e0e5ea; /* 背景色*/
+		}
+		.content {
+			max-width: 800px;
+			height: 0 auto;
+			margin: 0 auto; 
+			background-color: #fbfeff;
+			padding: 20px;
+			border-radius: 8px;
+		}
+		header {
+			background-color: #1166bb;
+			color: #fbfeff;
+			text-align: center;
+			width: 100%;
+			box-sizing: border-box;
+			margin: 0;
+			padding: 10px;
+			top: 0;
+			left: 0;
+			right: 0;
+			position: relative;
+		}
+		footer {
+			background-color: #1166bb;
+			color: #fbfeff;
+			text-align: center;
+			position: fixed;
+			width: 100%;
+			bottom: 0;
+			left: 0;
+			right: 0;
+		}
+		h2 {
+			color: #1188ff; /* タイトルの色 */
+			border-bottom: 2px solid #1188ff; /* 下線 */
+			padding-bottom: 10px;
+			text-align: left;
+		}
+		h3 {
+			color: #1688fa; /* 小見出しの色 */
+			text-align: left;
+		}
+		h4 {
+			color: #1b88f5; /* 中見出しの色*/
+			text-align: left;
+		}
+		p {
+			text-align: left;
+			margin-bottom: 20px;
+			color: #223344; /* 標準テキストの色*/
+		}
+		table {
+			table-layout: fixed; /* 固定幅 */
+			margin: 0 auto;
+			border-collapse: collapse;
+			overflow: hidden;
+			text-align: center;
+		}
+		td {
+			border: 1px solid #223344;
+			text-align: center;
+			padding: 10px;
+			background-color: #fbfeff; /* セル背景色を明るめに */
+			}
+		th {
+			border: 1px solid #223344;
+			text-align: center;
+			padding: 10px;
+			background-color: #ddeeff; /* ヘッダー */
+			color: #223344; /* ヘッダーの文字色 */
+		}
+		.annotation {
+			background-color: #f7fcff; /* 注釈の背景色 */
+			border: 1px solid #223344;
+			padding: 15px;
+			margin-top: 20px; 
+			border-radius: 5px; /* 丸みを追加 */
+		}
+		.annotation-item {
+			margin-top: 5px;
+		}
+		.scrollable {
+			overflow-x: auto;
+			overflow-y: hidden;
+			white-space: nowrap;
+			height: 0 auto;
+			margin: 0 auto;
+		}
+		@media (max-width: 600px) {
+			.content {
+				padding: 10px; /* 小さいスクリーン用にパディングを調整 */
+			}
+			th, td {
+				padding: 8px; /* テーブルセルのパディングを調整 */
+			}
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>高校数学</h1>
+	</header>
+	<main>
+		<div class="content">
+			<h2 id="math-1">目次</h2>
+			<ol>
+				<li><a href="math-1">数学Ⅰ</a></li>
+				<li><a href="math-2">数学Ⅱ</a></li>
+				<li><a href="math-3">数学Ⅲ</a></li>
+				<li><a href="math-A">数学Ａ</a></li>
+				<li><a href="math-B">数学Ｂ</a></li>
+				<li><a href="math-C">数学Ｃ</a></li>
+			</ol>
+			<p>&ensp;</p>
+			<h2 id="math-1">数学Ⅰ</h2>
+			<ol>
+				<li>数と式</li>
+				<li>図形と計量</li>
+				<li>二次関数</li>
+				<li>データの分析</li>
+			</ol>
+			<p>&ensp;</p>
+			<h2 id="math-2">数学Ⅱ</h2>
+			<ol>
+				<li>いろいろな式</li>
+				<li>図形と方程式</li>
+				<li>指数関数・対数関数</li>
+				<li>三角関数</li>
+				<li>微分・積分の考え</li>
+			</ol>
+			<p>&ensp;</p>
+			<h2 id="math-3">数学Ⅲ</h2>
+			<ol>
+				<li>極限</li>
+				<li>微分法</li>
+				<li>積分法</li>
+			</ol>
+			<p>&ensp;</p>
+			<h2 id="math-A">数学Ａ</h2>
+			<ol>
+				<li>図形の性質</li>
+				<li>場合の数と確率</li>
+				<li>数学と人間の活動</li>
+			</ol>
+			<p>&ensp;</p>
+			<h2 id="math-B">数学Ｂ</h2>
+			<ol>
+				<li>数列</li>
+				<li><a href="https://kuni0214.github.io/high-school/math/B/statistical-estimation.html">統計的な推測</a></li>
+			</ol>
+			<p>&ensp;</p>
+			<h2 id="math-C">数学Ｃ</h2>
+			<ol>
+				<li>ベクトル</li>
+				<li>平面上の曲線</li>
+				<li>数学的な表現の工夫</li>
+			</ol>
+			<p>&ensp;</p>
+		</div>
+	</main>
+	<footer>
+		<center>This site was created by Bessho.</center>
+	</footer>
+</body>
+</html>
