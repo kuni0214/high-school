@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<script>
+		MathJax = {tex: {inlineMath: [['$', '$']]}};
+	</script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>微分・積分の考え</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			line-height: 1.75;
+			margin: 0 auto;
+			padding: 0;
+			background-color: #e0e5ea; /* 背景色*/
+		}
+		.content {
+			max-width: 800px;
+			height: 0 auto;
+			margin: 0 auto; 
+			background-color: #fbfeff;
+			padding: 20px;
+			border-radius: 8px;
+		}
+		header {
+			background-color: #1166bb;
+			color: #fbfeff;
+			text-align: center;
+			width: 100%;
+			box-sizing: border-box;
+			margin: 0;
+			padding: 10px;
+			top: 0;
+			left: 0;
+			right: 0;
+			position: relative;
+		}
+		footer {
+			background-color: #1166bb;
+			color: #fbfeff;
+			text-align: center;
+			position: fixed;
+			width: 100%;
+			bottom: 0;
+			left: 0;
+			right: 0;
+		}
+		h2 {
+			color: #1188ff; /* タイトルの色 */
+			border-bottom: 2px solid #1188ff; /* 下線 */
+			padding-bottom: 10px;
+			text-align: left;
+		}
+		h3 {
+			color: #1688fa; /* 小見出しの色 */
+			text-align: left;
+		}
+		h4 {
+			color: #1b88f5; /* 中見出しの色*/
+			text-align: left;
+		}
+		p {
+			text-align: left;
+			margin-bottom: 20px;
+			color: #223344; /* 標準テキストの色*/
+		}
+		table {
+			table-layout: fixed; /* 固定幅 */
+			margin: 0 auto;
+			border-collapse: collapse;
+			overflow: hidden;
+			text-align: center;
+		}
+		td {
+			border: 1px solid #223344;
+			text-align: center;
+			padding: 10px;
+			background-color: #fbfeff; /* セル背景色を明るめに */
+			}
+		th {
+			border: 1px solid #223344;
+			text-align: center;
+			padding: 10px;
+			background-color: #ddeeff; /* ヘッダー */
+			color: #223344; /* ヘッダーの文字色 */
+		}
+		.annotation {
+			background-color: #f7fcff; /* 注釈の背景色 */
+			border: 1px solid #223344;
+			padding: 15px;
+			margin-top: 20px; 
+			border-radius: 5px; /* 丸みを追加 */
+		}
+		.annotation-item {
+			margin-top: 5px;
+		}
+		.scrollable {
+			overflow-x: auto;
+			overflow-y: hidden;
+			white-space: nowrap;
+			height: 0 auto;
+			margin: 0 auto;
+		}
+		@media (max-width: 600px) {
+			.content {
+				padding: 10px; /* 小さいスクリーン用にパディングを調整 */
+			}
+			th, td {
+				padding: 8px; /* テーブルセルのパディングを調整 */
+			}
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>微分・積分の考え</h1>
+	</header>
+	<main>
+		<div class="content">
+			<h2>目次</h2>
+			<ol>
+				<li><a href="#section1">微分の考え</a>
+					<ol>
+						<li><a href="#subsection1">微分係数と導関数</a></li>
+						<li><a href="#subsection2">導関数の性質</a></li>
+						<li><a href="#subsection3">導関数の応用</a></li>
+					</ol>
+				</li>
+				<li><a href="#section2">積分の考え</a>
+					<ol>
+						<li><a href="#subsection4">不定積分</a></li>
+						<li><a href="#subsection5">定積分</a></li>
+						<li><a href="#subsection6">面積</a></li>
+					</ol>
+				</li>
+				<li><a href="#pdf">PDF ファイル</a></li>
+			</ol>
+			<section id="section1">
+				<p>&ensp;</p>
+				<h2>微分の考え</h2>
+				<subsection id="subsection1">
+					<h3>微分係数と導関数</h3>
+					<p>関数 $ f\left(x\right) $ において，$ x $ の変化に対する $ f\left(x\right) $ の変化の割合を <strong>平均変化率</strong> という。$ x $ の値が $ a $ から $ b $ まで変化するとき，関数 $ f\left(x\right) $ の平均変化率は $$ \dfrac{f\left(b\right) - f\left(a\right)}{b - a} $$ である。これはグラフ $ y = f\left(x\right) $ 上の $ 2 $ 点 $ \textrm{A} \left( a,{\,}f\left(a\right)\right) $，$ \textrm{B} \left( b,{\,}f\left(b\right)\right) $ を結んだ直線 $ \textrm{AB} $ の傾きを表している。</p>
+					<p>ここで，$ x $ の変化量 $ h $ を限りなく $ 0 $ に近づけたとき，平均変化率は $$ \lim_{h \rightarrow 0}{\dfrac{f\left(a + h\right) - f\left(a\right)}{h}} $$ と表される。これは，前の式で点 $ \textrm{B} $ を点 $ \textrm{A} $ に限りなく近づけたものと考えられ，これはグラフ $ y = f\left(x\right) $ 上の点 $ \textrm{A} \left( a,{\,}f\left(a\right)\right) $ における接線 $ \ell $ の傾きを表している。これを $ f'\left(a\right) $ と表し，$ x = a $ における <strong>微分係数</strong> という。</p>
+					<p>微分係数 $ f'\left(a\right) $ は $ a $ の値によって決まる関数と考えることができる。これをもとの関数 $ f\left(x\right) $ の変数 $ x $ の関数として表した $ f'\left(x\right) $ を，$ f\left(x\right) $ の <strong>導関数</strong> という。導関数の定義は微分係数の定義と同じであり，$$ f'\left(x\right) = \lim_{h \rightarrow 0}{\dfrac{f\left(x + h\right) - f\left(x\right)}{h}} $$ である。</p>
+					<p>たとえば，関数 $ f\left(x\right) = 3{x}^{2} - 4x + 5 $ において，\begin{align*}f'\left(2\right) &amp;= \lim_{h \rightarrow 0}{\dfrac{f\left(2 + h\right) - f\left(2\right)}{h}}\\ &amp;= \lim_{h \rightarrow 0}{\dfrac{8h + 3{h}^{2}}{h}}\\ &amp;= \lim_{h \rightarrow 0}\left(8 + 3h\right)\\ &amp;= 8\\ f'\left(x\right) &amp;= \lim_{h \rightarrow 0}{\dfrac{f\left(x + h\right) - f\left(x\right)}{h}}\\ &amp;= \lim_{h \rightarrow 0}{\dfrac{6xh - 4h + 3{h}^{2}}{h}}\\ &amp;= \lim_{h \rightarrow 0}\left(6x - 4 + 3h\right)\\ &amp;= 6x - 4\end{align*} である。</p>
+					<p>導関数を求める操作を <strong>微分</strong> という。$ f'\left(x\right) $ を $ \dfrac{\mathrm{d}}{\mathrm{d}x}f\left(x\right) $ とも表す。</p>
+				</subsection>
+				<p>&ensp;</p>
+				<subsection id="subsection2">
+					<h3>導関数の性質</h3>
+					<p>２つの関数 $ f\left(x\right) $，$ g\left(x\right) $ において，以下の関係が成り立つ。$$\left\{f(x) \pm g(x)\right\}' =f'(x) \pm g'(x)$$ $$\left\{kf(x)\right\}' = kf'(x)$$</p>
+					<p>$n$ を<strong>定数</strong>とするとき，$$\left({x}^{n}\right)' = n{x}^{n - 1}$$ である。</p>
+				</subsection>
+				<p>&ensp;</p>
+
+				<subsection id="subsection3">
+					<h3>導関数の応用</h3>
+					<p>関数 $y = f(x)$ 上の点 $\left(t,f(t)\right)$ における接線の方程式は，$$y - f(t) = f'(t)\left(x - t\right)$$ である。</p>
+					<p>$n$ を<strong>定数</strong>とするとき，$$\left({x}^{n}\right)' = n{x}^{n - 1}$$ である。</p>
+				</subsection>
+			</section>
+			<p>&ensp;</p>
+			<section id="section2">
+				<h2>積分の考え</h2>
+				<subsection id="subsection4">
+					<h3>不定積分</h3>
+				</subsection>
+				<p>&ensp;</p>
+				<subsection id="subsection5">
+					<h3>定積分</h3>
+				</subsection>
+				<p>&ensp;</p>
+
+				<subsection id="subsection6">
+					<h3>面積</h3>
+					
+				</subsection>
+			</section>
+			<p>&ensp;</p>
+			<section id="pdf">
+				<h2>PDF ファイル</h2>
+				<p>PDF ファイルは<a href="https://kuni0214.github.io/high-school/math/B/pdf/statistical-estimation.pdf">こちら</a>。</p>
+			</section>
+		</div>
+	</main>
+	<footer>
+		<center>This site was created by Bessho.</center>
+	</footer>
+</body>
+</html>
