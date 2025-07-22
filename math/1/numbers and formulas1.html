@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        MathJax = {tex: {inlineMath: [['$', '$']]}};
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数と式</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.75;
+            margin: 0 auto;
+            padding: 0;
+            background-color: #e0e5ea; /* 背景色*/
+        }
+        .content {
+            max-width: 800px;
+            height: 0 auto;
+            margin: 0 auto; 
+            background-color: #fbfeff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        header {
+            background-color: #1166bb;
+            color: #fbfeff;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 10px;
+            top: 0;
+            left: 0;
+            right: 0;
+            position: relative;
+        }
+        footer {
+            background-color: #1166bb;
+            color: #fbfeff;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        h2 {
+            color: #1188ff; /* タイトルの色 */
+            border-bottom: 2px solid #1188ff; /* 下線 */
+            padding-bottom: 10px;
+            text-align: left;
+        }
+        h3 {
+            color: #1688fa; /* 小見出しの色 */
+            text-align: left;
+        }
+        h4 {
+            color: #1b88f5; /* 中見出しの色*/
+            text-align: left;
+        }
+        p {
+            text-align: left;
+            margin-bottom: 20px;
+            color: #223344; /* 標準テキストの色*/
+        }
+        table {
+            table-layout: fixed; /* 固定幅 */
+            margin: 0 auto;
+            border-collapse: collapse;
+            overflow: hidden;
+            text-align: center;
+        }
+        td {
+            border: 1px solid #223344;
+            text-align: center;
+            padding: 10px;
+            background-color: #fbfeff; /* セル背景色を明るめに */
+            }
+        th {
+            border: 1px solid #223344;
+            text-align: center;
+            padding: 10px;
+            background-color: #ddeeff; /* ヘッダー */
+            color: #223344; /* ヘッダーの文字色 */
+        }
+        .annotation {
+            background-color: #f7fcff; /* 注釈の背景色 */
+            border: 1px solid #223344;
+            padding: 15px;
+            margin-top: 20px; 
+            border-radius: 5px; /* 丸みを追加 */
+        }
+        .annotation-item {
+            margin-top: 5px;
+        }
+        .scrollable {
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            height: 0 auto;
+            margin: 0 auto;
+        }
+        @media (max-width: 600px) {
+            .content {
+                padding: 10px; /* 小さいスクリーン用にパディングを調整 */
+            }
+            th, td {
+                padding: 8px; /* テーブルセルのパディングを調整 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>数と式</h1>
+    </header>
+    <main>
+        <div class="content">
+            <h2>目次</h2>
+            <ol>
+                <li><a href="#section1">数と式</a>
+                    <ol>
+                        <li><a href="#subsection1">実数</a></li>
+                        <li><a href="#subsection2">集合と命題</a></li>
+                        <li><a href="#subsection3">2次式の乗法公式，因数分解</a></li>
+                        <li><a href="#subsection4">1次不等式</a></li>
+                    </ol>
+                </li>
+            </ol>
+
+            <section id="section1">
+                <p>&ensp;</p>
+                <h2>数と式</h2>
+
+                <subsection id="subsection1">
+                    <h3>実数</h3>
+                    <p>数は，自然数から始まり，整数，有理数へと拡張されてきた。ここでは，それらを包含する<strong>実数</strong>について学ぶ。</p>
+
+                    <h4>実数の分類</h4>
+                    <ul>
+                        <li><strong>有理数</strong>: 分数で表せる数。整数，有限小数，循環小数を含む。</li>
+                        <li><strong>無理数</strong>: 分数で表せない数。循環しない無限小数。$ \sqrt{2} $，$ \pi $ など。</li>
+                    </ul>
+
+                    <h4>実数の性質</h4>
+                    <ul>
+                        <li><strong>四則演算</strong>: 実数同士の加減乗除の結果も実数になる（ただし，0で割る場合を除く）。</li>
+                        <li><strong>大小関係</strong>: 2つの実数間には大小関係が必ず存在する。</li>
+                        <li><strong>数直線</strong>: 全ての実数は数直線上の点として表現できる。</li>
+                    </ul>
+                </subsection>
+
+                <subsection id="subsection2">
+                    <h3>集合と命題</h3>
+                    <p><strong>集合</strong>とは，明確な基準によって範囲が定められた，ものの集まりのことだ。集合と命題は，数学における論理的な思考の基礎となる。</p>
+
+                    <h4>集合</h4>
+                    <ul>
+                        <li><strong>要素</strong>: 集合を構成するもの。</li>
+                        <li><strong>部分集合</strong>: ある集合の一部の要素からなる集合。</li>
+                        <li><strong>共通部分</strong>: 2つの集合に共通する要素の集合。</li>
+                        <li><strong>和集合</strong>: 2つの集合の要素を全て集めた集合。</li>
+                        <li><strong>補集合</strong>: ある集合に属さない要素の集合。</li>
+                    </ul>
+
+                    <h4>命題</h4>
+                    <ul>
+                        <li><strong>命題</strong>: 真偽が明確に判断できる文や式。</li>
+                        <li><strong>条件</strong>: 変数を含む命題。変数の値によって真偽が変化する。</li>
+                        <li><strong>真理集合</strong>: 条件を満たす要素全体の集合。</li>
+                        <li><strong>必要条件</strong>: 命題が成り立つために必ず必要な条件。</li>                        <li><strong>十分条件</strong>: 命題が成り立つために十分な条件。</li>
+                        <li><strong>必要十分条件</strong>: 必要条件であり，かつ十分条件である条件。</li>
+                    </ul>
+
+                    <p>ベン図を用いることで，集合の関係を視覚的に理解することができる。</p>
+
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Venn_A_intersect_B.svg/340px-Venn_A_intersect_B.svg.png" alt="ベン図の例" width="300">
+                    <p style="text-align: center;">共通部分のベン図</p>
+                </subsection>
+
+                <subsection id="subsection3">
+                    <h3>2次式の乗法公式，因数分解</h3>
+                    <p>2次式は，様々な計算や問題解決において重要な役割を果たす。乗法公式や因数分解を習得することで，複雑な式を簡単にしたり，方程式を解いたりすることが可能になる。</p>
+
+                    <h4>乗法公式</h4>
+                    <ul>
+                        <li>$ (a+b)^2 = a^2 + 2ab + b^2 $</li>
+                        <li>$ (a-b)^2 = a^2 - 2ab + b^2 $</li>
+                        <li>$ (a+b)(a-b) = a^2 - b^2 $</li>
+                        <li>$ (x+a)(x+b) = x^2 + (a+b)x + ab $</li>
+                    </ul>
+
+                    <h4>因数分解</h4>
+                    <p>因数分解は，多項式をいくつかの因数の積の形に変形することだ。乗法公式を逆に利用することで，効率的に因数分解を行うことができる。</p>
+                    <ul>
+                        <li>$ a^2 + 2ab + b^2 = (a+b)^2 $</li>
+                        <li>$ a^2 - 2ab + b^2 = (a-b)^2 $</li>
+                        <li>$ a^2 - b^2 = (a+b)(a-b) $</li>
+                        <li>$ x^2 + (a+b)x + ab = (x+a)(x+b) $</li>
+                    </ul>
+                </subsection>
+                
+                <subsection id="subsection4">
+                    <h3>1次不等式</h3>
+                    <p><strong>不等式</strong>とは，数の大小関係を表す式のことだ。不等式を解くことで，変数の範囲を求めることができる。</p>
+                    
+                    <h4>不等号の種類</h4>
+                    <ul>
+                        <li>$ a > b $: aはbより大きい</li>
+                        <li>$ a < b $: aはbより小さい</li>
+                        <li>$ a \geq b $: aはb以上</li>
+                        <li>$ a \leq b $: aはb以下</li>
+                    </ul>
+                    
+                    <h4>1次不等式の解法</h4>
+                    <ul>
+                        <li><strong>移項</strong>: 等式と同様に，項を移行することができる。</li>
+                        <li><strong>両辺の乗除</strong>: 正の数を掛ける・割る場合は不等号の向きは変わらないが，負の数を掛ける・割る場合は不等号の向きが変わることに注意する。</li>
+                    </ul>
+                    
+                    <p>数直線を用いることで，不等式の解を視覚的に理解することができる。</p>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Inequality_on_number_line.svg/600px-Inequality_on_number_line.svg.png" alt="数直線" width="400">
+                    <p style="text-align: center;">数直線上の不等式表現</p>
+                    
+                    
+                </subsection>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <center>このサイトは，学習指導要領を参考に作成されています。</center>
+    </footer>
+</body>
+</html>
